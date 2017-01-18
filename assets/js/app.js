@@ -177,6 +177,7 @@ function onKeyDown(event) {
         keyData[event.key].sound.play();
         // newCircle.fillColor = "orange";
         circles.push(newCircle)
+        console.log(circles);
     }
 }
 
@@ -185,6 +186,12 @@ function onFrame(event) {
     for(var i = 0; i < circles.length; i++) {
         circles[i].fillColor.hue += 1;
         circles[i].scale(.9);
+        if(circles[i].area < 1){
+            circles[i].remove();
+            circles.splice(i, 1);
+            console.log(circles.length);
+        }
+        // console.dir(circles.length);
     }
 }
 
